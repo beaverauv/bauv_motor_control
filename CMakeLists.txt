@@ -8,6 +8,7 @@ project(bauv_motor_control)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  pid
   roscpp
   rospy
 )
@@ -104,7 +105,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES bauv_motor_control
-#  CATKIN_DEPENDS roscpp rospy
+#  CATKIN_DEPENDS pid roscpp rospy
 #  DEPENDS system_lib
 )
 
