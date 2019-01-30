@@ -1,0 +1,37 @@
+<launch>
+	<node name="heave_pid" pkg="pid" type="controller" output="screen" >
+		<param name="Kp" value="5.0" />
+		<param name="Ki" value="1.0" />
+		<param name="Kd" value="0.0" />
+		<param name="upper_limit" value="10" />
+		<param name="lower_limit" value="-10" />
+		<param name="windup_limit" value="10" />
+		<param name="cutoff_frequency" value="20" />
+		<param name="max_loop_frequency" value="105.0" />
+		<param name="min_loop_frequency" value="95.0" />
+		<param name="topic_from_controller" value="heave_effort" />
+		<param name="topic_from_plant" value="heave_plant" />
+		<param name="setpoint_topic" value="heave_setpoint" />
+		<param name="node_name" value="heave_pid" />
+	</node>
+	
+	<node name="yaw_pid" pkg="pid" type="controller" output="screen" >
+		<param name="Kp" value="5.0" />
+		<param name="Ki" value="1.0" />
+		<param name="Kd" value="0.0" />
+		<param name="upper_limit" value="10" />
+		<param name="lower_limit" value="-10" />
+		<param name="windup_limit" value="10" />
+		<param name="cutoff_frequency" value="20" />
+		<param name="max_loop_frequency" value="105.0" />
+		<param name="min_loop_frequency" value="95.0" />
+		<param name="topic_from_controller" value="yaw_effort" />
+		<param name="topic_from_plant" value="yaw_plant" />
+		<param name="setpoint_topic" value="yaw_setpoint" />
+		<param name="node_name" value="yaw_pid" />
+		<param name="angle_error" value="true" />
+		<param name="angle_wrap" value="2.0*180.0" />
+	</node>
+
+</launch>
+
