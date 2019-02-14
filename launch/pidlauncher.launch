@@ -1,27 +1,30 @@
 <launch>
-	<node name="heave_pid" pkg="pid" type="controller" output="screen" >
-		<param name="Kp" value="5.0" />
-		<param name="Ki" value="1.0" />
-		<param name="Kd" value="0.0" />
-		<param name="upper_limit" value="10" />
-		<param name="lower_limit" value="-10" />
-		<param name="windup_limit" value="10" />
-		<param name="cutoff_frequency" value="20" />
-		<param name="max_loop_frequency" value="105.0" />
-		<param name="min_loop_frequency" value="95.0" />
-		<param name="topic_from_controller" value="heave_effort" />
-		<param name="topic_from_plant" value="heave_plant" />
-		<param name="setpoint_topic" value="heave_setpoint" />
-		<param name="node_name" value="heave_pid" />
+	<node pkg="imu_vn_100" name="imu" type="imu_vn_100_cont_node" output="screen">
+		<param name="port" type="string" value="/dev/ttyUSB0"/>
+		<param name="baudrate" type="int" value="921600"/>
+    		<param name="frame_id" type="string" value="imu"/>
+    		<param name="imu_rate" type="int" value="100"/>
+    		<param name="binary_output" type="bool" value="true"/>
+    		<param name="enable_mag" type="bool" value="true"/>
+    		<param name="enable_pres" type="bool" value="true"/>
+    		<param name="enable_temp" type="bool" value="true"/>
+    		<param name="enable_frame_rotation" type="bool" value="true"/>
+    		<param name="frame_rotation_matrix" value="[1.0, 1.0, 1.0, 1.0, -1.0, 0.0, 0.0, 0.0, -1.0]"/>
+    		<param name="sync_rate" type="int" value="20"/>
+    		<param name="sync_pulse_width_us" type="int" value="1000"/>
+    		<param name="imu_compensated" value="true"/>
 	</node>
-	
+
+	<node pkg="bauv_motor_control" name="valueFeeder" type="valueFeeder.py" output="screen">
+	</node>
+
 	<node name="yaw_pid" pkg="pid" type="controller" output="screen" >
-		<param name="Kp" value="5.0" />
-		<param name="Ki" value="1.0" />
+		<param name="Kp" value="0.0" />
+		<param name="Ki" value="0.0" />
 		<param name="Kd" value="0.0" />
-		<param name="upper_limit" value="10" />
-		<param name="lower_limit" value="-10" />
-		<param name="windup_limit" value="10" />
+		<param name="upper_limit" value="100" />
+		<param name="lower_limit" value="-100" />
+		<param name="windup_limit" value="100" />
 		<param name="cutoff_frequency" value="20" />
 		<param name="max_loop_frequency" value="105.0" />
 		<param name="min_loop_frequency" value="95.0" />
@@ -34,4 +37,3 @@
 	</node>
 
 </launch>
-
