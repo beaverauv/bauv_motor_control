@@ -1,8 +1,8 @@
-int8 vfl
-int8 vfr
-int8 vbl
-int8 vbr
-int8 hfl
-int8 hfr
-int8 hbl
-int8 hbr
+int16 vfl
+int16 vfr
+int16 vbl
+int16 vbr
+int16 hfl
+int16 hfr
+int16 hbl
+int16 hbr
